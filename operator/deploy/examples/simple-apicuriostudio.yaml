@@ -1,0 +1,5 @@
+apiVersion: studio.apicur.io/v1
+kind: ApicurioStudio
+metadata:
+  name: simple-apicuriostudio
+spec: { }

@@ -1,0 +1,23 @@
+package io.apicurio.studio.operator.resource.app;
+
+import io.apicurio.studio.operator.api.v1.model.ApicurioStudio;
+import io.apicurio.studio.operator.resource.LabelDiscriminator;
+import io.fabric8.kubernetes.api.model.Service;
+import io.javaoperatorsdk.operator.api.reconciler.ResourceDiscriminator;
+
+import java.util.Map;
+
+import static io.apicurio.studio.operator.resource.ResourceFactory.COMPONENT_APP;
+
+public class AppServiceDiscriminator extends LabelDiscriminator<Service> {
+
+    public static final ResourceDiscriminator<Service, ApicurioStudio> INSTANCE = new AppServiceDiscriminator();
+
+
+    public AppServiceDiscriminator() {
+        super(Map.of(
+                "app.kubernetes.io/name", "apicurio-studio",
+                "app.kubernetes.io/component", COMPONENT_APP
+        ));
+    }
+}

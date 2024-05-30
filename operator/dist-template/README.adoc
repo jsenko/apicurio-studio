@@ -1,0 +1,34 @@
+= Apicurio Studio Operator Distribution Bundle
+
+This directory contains installation files for the Apicurio Studio Operator, with example `ApicurioStudio` custom resource files.
+Docker images for the operator and the operand are distributed using a public registry.
+
+== Installation
+
+.Procedure
+. Choose a namespace where the operator will be deployed:
++
+[source,bash]
+----
+export NAMESPACE=apicurio-studio
+kubectl create namespace $NAMESPACE
+----
+
+. Kubernetes resources required for the installation are present inside `install.yaml` file.
+Apply the installation file:
++
+[source,bash]
+----
+cat install.yaml | sed "s/PLACEHOLDER_NAMESPACE/$NAMESPACE/g" | kubectl -n $NAMESPACE apply -f -
+----
+
+== Deploy Apicurio Studio
+
+After the Apicurio Studio Operator has been deployed, it can deploy an Apicurio Studio instance.
+
+To create a new Apicurio Studio deployment, the fastest way is to use one of the example `ApicurioStudio` custom resources:
+
+[source,bash]
+----
+kubectl -n $NAMESPACE apply -f examples/simple-apicuriostudio.yaml
+----

@@ -10,6 +10,7 @@
     <name>apicurio-studio</name>
 
     <url>https://www.apicur.io/studio</url>
+
     <description>Open Source web-based API design suite for contract-first API development.</description>
 
     <organization>
@@ -89,6 +90,9 @@
         <module>dist/docker</module>
         <module>docs</module>
         <module>examples</module>
+        <module>operator</module>
+        <module>operator/api-model</module>
+        <module>operator/operator</module>
     </modules>
 
     <properties>
@@ -272,7 +276,7 @@
                 <version>${version.wiremock}</version>
                 <scope>test</scope>
             </dependency>
-            
+
             <dependency>
                 <groupId>io.zonky.test</groupId>
                 <artifactId>embedded-postgres</artifactId>
@@ -548,7 +552,7 @@
                 <quarkus.profile>prod</quarkus.profile>
             </properties>
         </profile>
-        
+
         <profile>
             <id>integration-tests</id>
             <modules>
